@@ -10,3 +10,8 @@ variable "instance_type" {
   type = string
   
 }
+variable "aws_subnet" {
+  description = "passing subnet to main"
+  default = ""
+  type = string
+}
