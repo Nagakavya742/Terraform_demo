@@ -1,16 +1,18 @@
-data "aws_subnet" "name" {
+data "aws_subnet" "name" {    #data source means calling the existing resources itself
   filter {
     name = "tag:Name"
     values = ["test"]   #insert the value here  it will call test subnet
   }
 }
 data "aws_ami" "amzlinux" {
-  owners = ["amazon"]
-  most_recent = true   #from the most recent ami called that satisfy the below filters
+  owners      = ["amazon"]
+  most_recent = true
+
   filter {
-    name = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp3"]
+    name   = "name"
+    values = ["amzn2-ami-hvm-*"]
   }
+
   filter{
     name = "root-device-type"
     values = ["ebs"]
@@ -52,3 +54,5 @@ resource "aws_instance" "name" {
   instance_type = "t2.micro"
   subnet_id = data.aws_subnet.name.id
 }
+
+#executed and ec2 created by above data source of iam and subnet
