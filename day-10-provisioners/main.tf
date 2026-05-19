@@ -145,7 +145,11 @@ resource "aws_instance" "server"{
 #     }
 # }
 
+
+# rerunning null_resource depends on timestamp not on content modification ...because state values is not tracking inside the contnet
 #solution-2 to rerun the provisioner
 #use terraform taint to manually mark the resource for the recreation
 #terraform taint aws_instance.server
+#terraform apply
+
 
