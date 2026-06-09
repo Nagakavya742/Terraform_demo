@@ -95,6 +95,7 @@ resource "aws_instance" "server"{
   vpc_security_group_ids = [aws_security_group.websg.id]
   subnet_id = aws_subnet.sub1.id
   associate_public_ip_address = true
+  
 
   tags = {
     Name = "ubuntu server"
@@ -105,7 +106,7 @@ resource "aws_instance" "server"{
     user = "ubuntu"             #ubuntu user for ubuntu and ec2 user for linux
      private_key = file("C:/Users/PAVAN SAI KUMAR/.ssh/id_rsa")
     host = self.public_ip     #or aws_instance.server.public_ip
-    timeout = "2m"
+    timeout = "10m"
   }
 
   provisioner "file" {
