@@ -6,6 +6,9 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: BASECODE
 
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_TOKEN }}
